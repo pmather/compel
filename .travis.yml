@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without development production
+bundler_args: --without production
 cache: bundler
 sudo: false
 rvm:
@@ -19,3 +19,7 @@ addons:
     - libarchive-dev
 before_install:
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+before_script:
+  - cp ./config/secrets.yml.sample ./config/secrets.yml
+script:
+  - bundle exec rails ci
