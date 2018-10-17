@@ -25,5 +25,7 @@ before_script:
   - mkdir -p tmp/solr-test
   - RAILS_ENV=test bundle exec solr_wrapper -v --config config/solr_wrapper_test.yml --version 5.5.5 &
   - RAILS_ENV=test bundle exec fcrepo_wrapper -v --config config/fcrepo_wrapper_test.yml --version 4.5.1 &
+  - sleep 120
+  - echo "Hopefully Solr and Fedora wrappers have started up..."
 script:
   - bundle exec rails spec
