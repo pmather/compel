@@ -21,5 +21,6 @@ before_install:
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 before_script:
   - cp ./config/secrets.yml.sample ./config/secrets.yml
+  - RAILS_ENV=test bundle exec rails db:setup
 script:
   - bundle exec rails spec
