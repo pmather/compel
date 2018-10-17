@@ -22,6 +22,7 @@ before_install:
 before_script:
   - cp ./config/secrets.yml.sample ./config/secrets.yml
   - RAILS_ENV=test bundle exec rails db:setup
-  - RAILS_ENV=test bundle exec rails hydra:test_server
+  - RAILS_ENV=test bundle exec solr_wrapper -v --config config/solr_wrapper_test.yml --version 5.5.5
+  - RAILS_ENV=test bundle exec fcrepo_wrapper -v --config config/fcrepo_wrapper_test.yml --version 4.5.1
 script:
   - bundle exec rails spec
